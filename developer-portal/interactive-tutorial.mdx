@@ -1,0 +1,127 @@
+---
+seo:
+    title: Interactive tutorial test
+    description: Interactive approach to make tutorials more fun!
+toc:
+    enable: true
+---
+
+import {
+    H3,
+    OpenApiTryIt,
+    OpenApiCodeSample,
+    Alert,
+    ExplainStep,
+    scrollToHeading
+} from '@redocly/developer-portal/ui';
+
+# Create a shared administrator account
+
+In this step-by-step guide, we will create a shared administrator account for the organization.
+
+# Step 1
+
+In this step, we're creating a new user account.
+
+<OpenApiTryIt
+    definitionId="petstore"
+    operationId="createUser"
+    id="step-1"
+    properties={{
+        firstName: "John",
+        lastName: "Smith"
+    }}
+    parameters={{
+        header: {
+            'Organization-Id': 'My-Header'
+        }
+    }}
+    onResponse={({ response }) => {
+        if (response.ok) {
+            scrollTo(0, document.querySelector('#step-2').offsetTop - 20, { behavior: 'smooth' })
+        }
+    }}
+/>
+
+# Step 2
+
+In this step, we're changing the account status to give the user administrator privileges.
+
+<OpenApiTryIt
+    definitionId="petstore"
+    operationId="updateUser"
+    id="step-2"
+    needs={['step-1']}
+    properties={(step1) => ({
+        userId: step1.response.body.data.user.id,
+        status: "admin",
+    })}
+    placeholder={(step1) => {
+        if (!step1) {
+            return (
+                <Alert variant="danger">
+                    Please complete Step 1 first. We need the user ID (<strong><i>step1.response.body.data.user.id</i></strong>) from the response body in Step 1 for this request. This ID tells the API which user account to update.
+                </Alert>
+            );
+        } else {
+            return (
+                <Alert variant="success">
+                    <strong>You can now send the request to change account status for the {step1.response.body.data.user.id} user.</strong>
+                </Alert>
+            )
+        }
+    }}
+    onResponse={({ response }) => {
+        if (response.ok) {
+            scrollTo(0, document.querySelector('#step-3').offsetTop - 20, { behavior: 'smooth' })
+        }
+    }}
+/>
+
+# Step 3
+
+In this step, we're setting the scope of administrator privileges to the entire organization.
+
+<ExplainStep
+    needs={['step-1', 'step-2']}
+    id="explain-step-1"
+    placeholder={(step1,step2) => {
+        if (!step1) {
+            return (
+                <Alert variant="danger">
+                    You must create a user account first. Please complete Step 1. The user ID from the Step 1 response body is required to send a request in Step 2.
+                </Alert>
+            )
+        } else if (!step2) {
+            return (
+                <Alert variant="danger">
+                    You must change the user status before proceeding with Step 3. Please complete Step 2. The user account must have administrator privileges to send a request in Step 3. We also need the list of permissions from the Step 2 response body for this request.
+                </Alert>
+            )
+        } else {
+            return (
+                <Alert variant="success">
+                    <strong>You have successfully completed Step 1 and Step 2!</strong><br />
+                    Now you can proceed to Step 3.
+                </Alert>
+            )
+        }
+    }}
+/>
+
+<OpenApiTryIt
+    definitionId="petstore"
+    operationId="setScope"
+    id="step-3"
+    needs={['step-1', 'step-2']}
+    properties={(step1, step2) => ({
+        userId: step1.response.body.data.user.id,
+        permissions: step2.response.body.permissions,
+        scope: "org",
+    })}
+    placeholder={(step1, step2) => {
+        const text = step1 || step2 ? 'Complete 1 remaining step' : 'Complete the 2 steps above';
+        return <Alert variant="warning">{text}</Alert>
+    }}
+/>
+
