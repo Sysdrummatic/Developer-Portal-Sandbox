@@ -3770,7 +3770,8 @@ paths:
           description: OK
 security:
 #  - basicAuth: []
-  - apiKey : []
+#  - apiKey : []
+  - oAuth2 : []
 servers:
   - url: https://api.cdq.com/data-exchange/rest
     description: Production
@@ -3779,10 +3780,16 @@ components:
 #    basicAuth:
 #      type: http
 #      scheme: basic
-    apiKey:
-      type: apiKey
-      in: header
-      name: X-API-KEY
+#    apiKey:
+#      type: apiKey
+#      in: header
+#      name: X-API-KEY
+    oAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: "https://id.cdq.com/auth/realms/cs/protocol/openid-connect/token"
+          scopes: {}
   parameters:
     usernameHeaderParam:
       name: X-Credential-Username
