@@ -3769,15 +3769,20 @@ paths:
                 $ref: '#/components/schemas/SharingScopeDeleteResults'
           description: OK
 security:
-  - basicAuth: []
+#  - basicAuth: []
+  - apiKey : []
 servers:
-  - url: https://api.corporate-data-league.ch/data-exchange/rest
+  - url: https://api.cdq.com/data-exchange/rest
     description: Production
 components:
   securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+#    basicAuth:
+#      type: http
+#      scheme: basic
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
   parameters:
     usernameHeaderParam:
       name: X-Credential-Username
@@ -8798,7 +8803,7 @@ components:
           type: string
           description: >-
             A DataSource ID for which all related BusinessPartners should be
-            un-/disclose 
+            un-/disclose
         countryCode:
           deprecated: true
           type: string
@@ -10363,7 +10368,7 @@ components:
                   example: 'false'
                   description: >-
                     Indicates whether the telephone number can be connected to
-                    successfully.<br/><br/>- If true, connection to the 
+                    successfully.<br/><br/>- If true, connection to the
                     telephone number is unsuccessful.<br/>- If false, connection
                     to the  telephone number is successful.
                 isDelisted:
@@ -10488,7 +10493,7 @@ components:
                     example: 'false'
                     description: >-
                       Indicates whether the telephone number can be connected to
-                      successfully.<br/><br/>- If true, connection to the 
+                      successfully.<br/><br/>- If true, connection to the
                       telephone number is unsuccessful.<br/>- If false,
                       connection to the  telephone number is successful.
                 example: ''
@@ -10791,7 +10796,7 @@ components:
                   example: 'true'
                   description: >-
                     Indicates if the primary address is the same as the address
-                    of the entity as registered with a legal entity.  <br/> 
+                    of the entity as registered with a legal entity.  <br/>
                     <br/>- If true, the primary address is the same as the
                     address of the entity as registered with a legal
                     entity.<br/>- If false, the primary address is the not same
@@ -11561,7 +11566,7 @@ components:
                   example: Privately owned
                   description: >-
                     The name for the type of controlling ownership (e.g.,
-                    publicly owned, privately owned, state owned).  
+                    publicly owned, privately owned, state owned).
                     <br/><br/>Note:  For some countries, controlling ownership
                     can be derived from the legal form.
                 dnbCode:
@@ -14692,7 +14697,7 @@ components:
                         postal box) is a uniquely addressable lockable box
                         located on the premises of a post office station where
                         the organisation requests to have official
-                        correspondence delivered. <br/>A Private Mail box 
+                        correspondence delivered. <br/>A Private Mail box
                         (commonly abbreviated as PMB provides a real street
                         address and can accept delivery of packages as well as
                         mail.
@@ -16353,7 +16358,7 @@ components:
                     Index ranging from 0 to 1 representing the likelihood of a
                     business record being created to enable the company to
                     continue doing business with the government while
-                    obfuscating a past violation, debarment, or novation fraud. 
+                    obfuscating a past violation, debarment, or novation fraud.
                     1 indicates the highest likelihood  and 0 indicates the
                     lowest
                   example: 0.4
@@ -17014,7 +17019,7 @@ components:
                     duns:
                       type: string
                       description: >-
-                        The D-U-N-S number of the Headquarters organization 
+                        The D-U-N-S number of the Headquarters organization
                         that serves as the administrative office for its
                         branches.
                       example: '804735132'
