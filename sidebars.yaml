@@ -20,7 +20,7 @@ training:
       - group: Resources
         expanded: true
         pages:
-          - page: openapi/petstore-auth.page.yaml/*
+          - page: openapi/data-exchange.page.yaml/*
   - separator:
   - group: Training exercises
     expanded: true
