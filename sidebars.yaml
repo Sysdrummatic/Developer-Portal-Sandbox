@@ -1,5 +1,7 @@
 training:
   - page: developer-portal/index.md
+  - page: developer-portal/oAuth2-swagger.md
+  - page: developer-portal/oAuth2-cdq.md
   - group: Training exercises
     expanded: true
     pages:
