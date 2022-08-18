@@ -7,12 +7,20 @@ training:
     pages:
       - label: Quick Start
         page: developer-portal/oAuth2-swagger.md
-  - group: OAuth2.0. Swagger
+      - group: Resources
+        expanded: true
+        pages:
+          - page: openapi/petstore-auth.page.yaml/*
+  - group: OAuth2.0. CDQ
     menuStyle: drilldown
     expanded: false
     pages:
       - label: Quick Start
         page: developer-portal/oAuth2-cdq.md
+      - group: Resources
+        expanded: true
+        pages:
+          - page: openapi/petstore-auth.page.yaml/*
   - separator:
   - group: Training exercises
     expanded: true
