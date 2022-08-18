@@ -1,7 +1,19 @@
 training:
   - page: developer-portal/index.md
-  - page: developer-portal/oAuth2-swagger.md
-  - page: developer-portal/oAuth2-cdq.md
+  - separator:
+  - group: OAuth2.0. Swagger
+    menuStyle: drilldown
+    expanded: false
+    pages:
+      - label: Quick Start
+        page: developer-portal/oAuth2-swagger.md
+  - group: OAuth2.0. Swagger
+    menuStyle: drilldown
+    expanded: false
+    pages:
+      - label: Quick Start
+        page: developer-portal/oAuth2-cdq.md
+  - separator:
   - group: Training exercises
     expanded: true
     pages:
