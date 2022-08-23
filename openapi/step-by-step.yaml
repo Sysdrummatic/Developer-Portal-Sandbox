@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Step By Step Test API
+  contact:
+    name: Redocly
+    url: 'https://redoc.ly'
+    email: team@redoc.ly
+  license:
+    name: Redocly
+    url: 'https://redoc.ly/api-license/'
+  termsOfService: 'https://redoc.ly/terms-of-use/'
+  description: Test API
+servers:
+  - url: https://{subdomain}.free.beeceptor.com
+    description: Test Server
+    variables:
+      subdomain:
+        default: step-by-step
+        enum:
+          - step-by-step
+          - server-to-server
+paths:
+  /create-user:
+    post:
+      summary: Create User
+      operationId: CreateUser
+      parameters:
+        - $ref: '#/components/parameters/OrganizationId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '200':
+          description: Create User.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /place-order:
+    post:
+      summary: Place Order
+      operationId: PlaceOrder
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cartId:
+                  type: string
+      responses:
+        '200':
+          description: Order Response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+  /invoice:
+    post:
+      summary: Invoice
+      operationId: Invoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                orderId:
+                  type: string
+      responses:
+        '200':
+          description: Invoice Response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        status:
+          type: string
+    UserResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Response'
+      properties:
+        data:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                id:
+                  type: string
+    OrderResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Response'
+      properties:
+        data:
+          type: object
+          properties:
+            order:
+              type: object
+              properties:
+                id:
+                  type: string
+    InvoiceResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Response'
+      properties:
+        data:
+          type: object
+          properties:
+            order:
+              type: object
+              properties:
+                id:
+                  type: string
+  parameters:
+    OrganizationId:
+      name: Organization-Id
+      in: header
+      schema:
+        type: string
+        example: 4f6cf35x-2c4y-483z-a0a9-158621f77a22

@@ -1,0 +1,107 @@
+import {
+  OpenApiTryIt,
+  Alert,
+  ExplainStep,
+  scrollToHeading
+ } from '@redocly/developer-portal/ui';
+
+# Purchase flow (server-to-server)
+
+## Step 1: Upsert a customer
+
+<OpenApiTryIt
+  definitionId="stepByStep"
+  operationId="CreateUser"
+  id="step-1"
+  properties={{
+    firstName: "John",
+    lastName: "Smith"
+  }}
+  parameters={{
+    header: {
+      'Organization-Id': 'My-Header'
+    }
+  }}
+  serverVariables={() => ({
+    subdomain: {
+      default: 'step-by-step',
+      enum: [
+        'step-by-step',
+        'peer-to-peer',
+        'server-to-server',
+        'end-to-end'
+      ]
+    }
+  })}
+  onResponse={({ response }) => {
+    if (response.ok) {
+      scrollTo(0, document.querySelector('#explain-step-1').offsetTop - 20, { behavior: 'smooth' })
+    }
+  }}
+/>
+
+<ExplainStep
+  needs={['step-1']}
+  id="explain-step-1"
+  placeholder={(step1) => {
+    if (!step1) {
+      return (
+        <Alert variant="danger">
+          We should take <strong><i>data.user.id</i></strong> from the body of the response and use it as a <strong><i>userId</i></strong> query parameter in the next requests.
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert variant="success">
+          <strong>User Id: {step1.response.body.data.user.id}</strong>
+        </Alert>
+      )
+    }
+  }}
+/>
+
+## Step 2: Create an order
+
+<OpenApiTryIt
+  definitionId="stepByStep"
+  operationId="PlaceOrder"
+  id="step-2"
+  needs={['step-1']}
+  properties={{
+    cartId: '8bb31d4b-0b88-4a29-9f08-a2af65f95dcf'
+  }}
+  parameters={(step1) => ({
+    query: {
+      userId: step1.response.body.data.user.id
+    }
+  })}
+  placeholder={(step1) => {
+    return <Alert variant="warning">Please complete step 1</Alert>
+  }}
+  onResponse={({ response }) => {
+    if (response.ok) {
+      scrollToHeading('#step-3-pay-the-invoice')
+    }
+  }}
+/>
+
+We need to use the `orderId` from the response in the next request.
+
+## Step 3: Pay the invoice
+
+<OpenApiTryIt
+  definitionId="stepByStep"
+  operationId="Invoice"
+  id="step-3"
+  needs={['step-1', 'step-2']}
+  properties={(step1, step2) => ({
+    userId: step1.response.body.data.user.id,
+    orderId: step2.response.body.data.order.id
+  })}
+  placeholder={(step1, step2) => {
+    const text = step1 || step2 ? 'Complete 1 remaining step' : 'Complete 2 steps above';
+    return <Alert variant="warning">{text}</Alert>
+  }}
+/>
+
+## Step 4: Bask in the glory of your integration
