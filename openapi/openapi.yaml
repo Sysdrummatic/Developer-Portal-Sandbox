@@ -3788,6 +3788,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
+          x-tokenEndpointAuthMethod: client_secret_basic
           tokenUrl: "https://id.cdq.com/auth/realms/cs/protocol/openid-connect/token"
           scopes: {}
   parameters:
