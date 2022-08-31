@@ -20,3 +20,4 @@ settings:
   sortOperationsAlphabetically: true
   sortEnumsAlphabetically: true
   sortPropsAlphabetically: true
+  authCorsProxyUrl: 'https://cors.redoc.ly'
