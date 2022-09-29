@@ -1,0 +1,8 @@
+type: reference-docs
+definitionId: petstore-auth
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js

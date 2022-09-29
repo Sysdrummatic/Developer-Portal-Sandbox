@@ -1,0 +1,23 @@
+type: reference-docs
+versions:
+  - definitionId: data-exchange-v4
+    id: V4
+    title: V4 (latest)
+    isDefault: true
+
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Python
+      - lang: Java
+      - lang: Node.js
+  pagination: section
+  showConsole: true
+  hideInfoSection: true
+  noAutoAuth: true
+  sortTagsAlphabetically: true
+  sortOperationsAlphabetically: true
+  sortEnumsAlphabetically: true
+  sortPropsAlphabetically: true
+  authCorsProxyUrl: 'https://cors.redoc.ly'
