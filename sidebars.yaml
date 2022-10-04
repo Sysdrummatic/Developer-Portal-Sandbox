@@ -22,15 +22,15 @@ training:
         pages:
           - page: openapi/data-exchange.page.yaml/*
   - group: Hide-Internal Swagger
-      menuStyle: drilldown
-      expanded: false
-      pages:
-        - label: Quick Start
-          page: developer-portal/hide-internla.md
-        - group: Resources
-          expanded: true
-          pages:
-            - page: openapi/hide-internal.page.yaml/*
+    menuStyle: drilldown
+    expanded: false
+    pages:
+      - label: Quick Start
+        page: developer-portal/hide-internal.md
+      - group: Resources
+        expanded: true
+        pages:
+          - page: openapi/hide-internal.page.yaml/*
   - separator:
   - group: Training exercises
     expanded: true
