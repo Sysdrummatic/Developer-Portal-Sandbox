@@ -1,0 +1,23 @@
+type: reference-docs
+versions:
+  - definitionId: hide-internal-v1
+    id: V1
+    title: V1 (latest)
+    isDefault: true
+
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Python
+      - lang: Java
+      - lang: Node.js
+  pagination: section
+  showConsole: true
+  hideInfoSection: true
+  noAutoAuth: true
+  sortTagsAlphabetically: true
+  sortOperationsAlphabetically: true
+  sortEnumsAlphabetically: true
+  sortPropsAlphabetically: true
+  authCorsProxyUrl: 'https://cors.redoc.ly'
