@@ -3,10 +3,10 @@ lint:
     - recommended
   plugins:
     - 'plugins/security.js'
-    - 'plugins/hide-internal.js'
+#    - 'plugins/hide-internal.js'
   decorators:
     security/replace-security: error
-    security/hide-internal-api: error
+#    security/hide-internal-api: error
 # apis section can be deleted after determination methods to be used.
 apis:
   internal@latest:

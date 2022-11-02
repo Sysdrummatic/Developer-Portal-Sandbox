@@ -31,6 +31,9 @@ tags:
 paths:
   /pet:
     post:
+      x-cdq-internal: true
+      x-public: true
+      x-hide: false
       tags:
         - pet
       summary: Add a new pet to the store
