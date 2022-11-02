@@ -3,7 +3,7 @@ lint:
     - recommended
   plugins:
     - 'plugins/security.js'
-    - 'plugins/hide-internal-api.js'
+    - 'plugins/hide-internal.js'
   decorators:
     security/replace-security: error
     security/hide-internal-api: error

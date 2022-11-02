@@ -1,5 +1,5 @@
 const HideInternal = require('./decorators/hide-internal-api');
-const id = 'security';
+const id = 'hide-internal';
 
 /** @type {import('@redocly/openapi-cli').CustomRulesConfig} */
 const decorators = {
