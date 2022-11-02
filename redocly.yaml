@@ -1,3 +1,13 @@
+lint:
+  extends:
+    - recommended
+  plugins:
+    - 'plugins/security.js'
+    - 'plugins/hide-internal-api.js'
+  decorators:
+    security/replace-security: error
+    security/hide-internal-api: error
+# apis section can be deleted after determination methods to be used.
 apis:
   internal@latest:
     root: ./openapi/hide-internal.yaml

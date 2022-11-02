@@ -2,6 +2,11 @@
 title: Training program
 ---
 
+# Download this awesome link!!
+
+[Click here to download!](awesome/new-archive.zip)
+
+
 # Training program XYZ
 
 This interactive training program is designed to help you understand how to create and edit content using Redocly's developer portal.
