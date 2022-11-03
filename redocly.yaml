@@ -6,12 +6,20 @@ lint:
 #    - 'plugins/hide-internal.js'
   decorators:
     security/replace-security: error
+    filter-out:
+      property: x-cdq-internal
+      value: true
+      matchStrategy: all
 #    security/hide-internal-api: error
 # apis section can be deleted after determination methods to be used.
-apis:
-  internal@latest:
-    root: ./openapi/hide-internal.yaml
-  external@latest:
-    root: ./openapi/hide-internal.yaml
-    decorators:
-      remove-x-internal: on
+
+#apis:
+#  internal@latest:
+#    root: ./openapi/hide-internal.yaml
+#  external@latest:
+#    root: ./openapi/hide-internal.yaml
+#    decorators:
+#      remove-x-internal: on
+rules:
+  operation-4xx-response: off
+  security-defined: off
