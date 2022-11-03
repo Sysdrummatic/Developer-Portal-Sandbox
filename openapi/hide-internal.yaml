@@ -32,8 +32,6 @@ paths:
   /pet:
     post:
       x-cdq-internal: true
-#      x-public: true
-#      x-hide: false
       tags:
         - pet
       summary: Add a new pet to the store
@@ -80,6 +78,7 @@ paths:
       operationId: findPetsByStatus
       parameters:
         - name: status
+          x-cdq-internal: true
           in: query
           description: Status values that need to be considered for filter
           required: true
@@ -681,11 +680,13 @@ components:
         - photoUrls
       properties:
         id:
+          x-cdq-internal: true
           type: integer
           format: int64
         category:
           $ref: '#/components/schemas/Category'
         name:
+          x-cdq-internal: true
           type: string
           example: doggie
         photoUrls:

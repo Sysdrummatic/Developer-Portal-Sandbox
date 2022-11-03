@@ -1,15 +1,14 @@
-lint:
-  extends:
-    - recommended
-  plugins:
-    - 'plugins/security.js'
+extends:
+  - recommended
+plugins:
+  - 'plugins/security.js'
 #    - 'plugins/hide-internal.js'
-  decorators:
-    security/replace-security: error
-    filter-out:
-      property: x-cdq-internal
-      value: true
-      matchStrategy: all
+decorators:
+  security/replace-security: error
+  filter-out:
+    property: x-cdq-internal
+    value: true
+    matchStrategy: all
 #    security/hide-internal-api: error
 rules:
   operation-4xx-response: off
