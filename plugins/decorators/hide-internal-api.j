@@ -4,17 +4,17 @@ module.exports = HideInternal;
  */
 function HideInternal() {
     return {
-        // Operation: {
-        //     leave(ctx) {
-        //         console.log(ctx)
-        //         if (ctx.hasOwnProperty("x-cdq-internal")) {
-        //             if (ctx['x-cdq-internal'] === true) {
-        //                 ctx['x-public'] = ["false"]
-        //                 ctx['x-hide'] = ["true"]
-        //
-        //             }
-        //         }
-        //     }
-        // }
+        Operation: {
+            leave(ctx) {
+                console.log(ctx)
+                if (ctx.hasOwnProperty("x-cdq-internal")) {
+                    if (ctx['x-cdq-internal'] === true) {
+                        ctx['x-public'] = ["false"]
+                        ctx['x-hide'] = ["true"]
+
+                    }
+                }
+            }
+        }
     }
 };

@@ -11,15 +11,6 @@ lint:
       value: true
       matchStrategy: all
 #    security/hide-internal-api: error
-# apis section can be deleted after determination methods to be used.
-
-#apis:
-#  internal@latest:
-#    root: ./openapi/hide-internal.yaml
-#  external@latest:
-#    root: ./openapi/hide-internal.yaml
-#    decorators:
-#      remove-x-internal: on
 rules:
   operation-4xx-response: off
   security-defined: off
